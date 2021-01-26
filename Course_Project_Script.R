@@ -12,10 +12,10 @@ x_train <- read.table("UCI HAR Dataset/train/X_train.txt", col.names = features$
 y_train <- read.table("UCI HAR Dataset/train/y_train.txt", col.names = "code")
 
 ## Creating one 'Data' from test set and training set
-X <- rbind(x_train, x_test)
-Y <- rbind(y_train, y_test)
+train_test_x <- rbind(x_train, x_test)
+train_test_y <- rbind(y_train, y_test)
 Subject <- rbind(subject_train, subject_test)
-Data <- cbind(Subject, Y, X)
+Data <- cbind(Subject, train_test_y, train_test_x)
 
 ## Extracting only the measurements on the mean and standard deviation for each measurement
 NewData <- Data %>% select(subject, code, contains("mean"), contains("std"))
